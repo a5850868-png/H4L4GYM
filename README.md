@@ -1,56 +1,55 @@
-# word-game-generator
+# Word Game Project
 
-一個可放上 GitHub Pages 的單字選擇題遊戲。直接修改 `index.html` 裡的單字庫，或在網頁右側貼上新的單字清單，就能產生新的練習題。
+可重複產生新單字範圍的 iPad 英文單字遊戲專案。目前單字範圍是運動主題；提供新的英文單字和中文意思後，可以覆寫目前遊戲的單字庫，並保留原本遊戲模式和規則。
 
-## 檔案內容
+## 遊戲模式
 
-- `index.html` - 單字遊戲
-- `README.md` - GitHub Pages 與使用說明
-- `start-game.bat` - 本機/iPad 測試啟動器
-- `server.js` - 本機測試用 HTTP server
-- `word-game-generator-skill/SKILL.md` - 讓 Codex 之後依同樣格式重製遊戲的技能說明
+- 圖字配對
+- 聽音選字
+- 拼字吊死人
+- 限時挑戰：60 秒內看能完成幾題，時間到後不能再作答
 
-## 本機使用
+## 遊戲規則
 
-最快方式是直接用瀏覽器開啟 `index.html`。
+- 答對加 10 分
+- 答錯扣 1 顆愛心
+- 滿 100 分過關
+- 過關出現 Great Job! 和 Word Master 徽章
+- 圖字配對和聽音選字不能跳題，答對後才會進下一題
+- 同一輪遊戲最近 10 題不會重複出現同一個目標單字
 
-若要讓 iPad 或同網路裝置測試：
+## 放到 GitHub Pages
 
-1. 在 Windows 上雙擊 `start-game.bat`
-2. 依畫面顯示的網址開啟，例如 `http://192.168.x.x:3000`
-3. iPad 必須與電腦連在同一個 Wi-Fi
+1. 在 GitHub 建立一個新的 repository。
+2. 上傳這個資料夾內的檔案，至少需要 `index.html`。
+3. 到 repository 的 Settings。
+4. 打開 Pages。
+5. Source 選 Deploy from a branch。
+6. Branch 選 `main`，資料夾選 `/root`。
+7. 儲存後等待 GitHub 產生網址。
 
-## GitHub Pages
-
-1. 建立 GitHub repository
-2. 上傳本資料夾內的檔案
-3. 到 repository 的 `Settings > Pages`
-4. Source 選 `Deploy from a branch`
-5. Branch 選 `main`，資料夾選 `/root`
-6. 儲存後等待 GitHub 顯示 Pages 網址
-
-## 更換單字
-
-在網頁右側的單字庫貼上資料，每行一組：
+完成後網址通常會像這樣：
 
 ```text
-baseball,棒球
-basketball,籃球
-ping-pong,桌球
-soccer,足球
+https://你的帳號.github.io/你的repo名稱/
 ```
 
-支援逗號、Tab、冒號或破折號分隔。至少需要 4 組單字，選擇題才能產生干擾選項。
+## 本機測試
 
-## 之後請 Codex 重製
+可以直接雙擊 `index.html` 開啟。
 
-可以在這個專案中說：
+如果要讓同一個 Wi-Fi 的 iPad 連進電腦玩，可以雙擊 `start-game.bat`，再用 iPad 開：
 
 ```text
-用 word-game-generator 把單字換成：
-baseball,棒球
-basketball,籃球
-...
+http://你的電腦IP:8000
 ```
 
-Codex 會依 `word-game-generator-skill/SKILL.md` 的規格更新遊戲。
+## 更新單字範圍
+
+專案內有一個 Skill：
+
+```text
+skills/word-game-generator
+```
+
+未來只要提供新的英文單字和中文意思，就可以用這個 Skill 覆寫目前遊戲的單字範圍，保留原本的遊戲模式和規則。

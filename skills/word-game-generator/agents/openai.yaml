@@ -1,0 +1,3 @@
+display_name: Word Game Generator
+short_description: Overwrite this project's vocabulary game with a new word list.
+default_prompt: Provide English words with Chinese meanings, and I will overwrite the game's word bank while preserving the existing iPad-friendly gameplay.
