@@ -17,6 +17,7 @@
 - 過關出現 Great Job! 和 Word Master 徽章
 - 圖字配對和聽音選字不能跳題，答對後才會進下一題
 - 同一輪遊戲最近 10 題不會重複出現同一個目標單字
+- 手機聽音選字需按喇叭播放，建議用 GitHub Pages 的 HTTPS 網址並打開媒體音量
 
 ## 放到 GitHub Pages
 

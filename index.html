@@ -816,14 +816,35 @@
       showMessage.id = setTimeout(() => message.classList.remove("show"), 1200);
     }
 
+    function englishVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      const voices = speechSynthesis.getVoices();
+      return voices.find((voice) => voice.lang && voice.lang.toLowerCase().startsWith("en-us"))
+        || voices.find((voice) => voice.lang && voice.lang.toLowerCase().startsWith("en"))
+        || null;
+    }
+
     function speak(text = state.current?.word) {
-      if (!text || !("speechSynthesis" in window)) return;
+      if (!text) return;
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        showMessage("這個瀏覽器不支援朗讀", false);
+        return;
+      }
+
       speechSynthesis.cancel();
+      if (speechSynthesis.paused) speechSynthesis.resume();
+
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-US";
       utterance.rate = 0.82;
       utterance.pitch = 1.05;
-      speechSynthesis.speak(utterance);
+      const voice = englishVoice();
+      if (voice) utterance.voice = voice;
+      utterance.onerror = () => showMessage("手機請開啟音量，並再按一次喇叭", false);
+
+      setTimeout(() => {
+        speechSynthesis.speak(utterance);
+      }, 40);
     }
 
     function award() {
